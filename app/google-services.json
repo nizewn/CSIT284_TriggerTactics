@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "334047163298",
+    "project_id": "triggertactics-4c472",
+    "storage_bucket": "triggertactics-4c472.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334047163298:android:4f9692d782eaa03da078fb",
+        "android_client_info": {
+          "package_name": "com.tgt.triggertactics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334047163298-gqlbg9cr126ru7406djianqamerphpkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXMPcNi4vAWFUw12YVagdlWYOSnKKkmLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334047163298-gqlbg9cr126ru7406djianqamerphpkd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
