@@ -13,6 +13,18 @@
         android:theme="@style/Theme.TriggerTactics"
         tools:targetApi="31">
         <activity
+            android:name=".CreateThreadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThreadListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditGamesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForumsActivity"
             android:exported="false" />
         <activity
@@ -20,8 +32,8 @@
             android:exported="false" />
         <activity
             android:name=".HomepageActivity"
-            android:launchMode="singleTask"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

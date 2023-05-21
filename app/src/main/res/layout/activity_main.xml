@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profileImageView"
         android:layout_width="363dp"
         android:layout_height="351dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
@@ -65,11 +65,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView"
         app:layout_constraintVertical_bias="0.5">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewProfileEmail"
             android:layout_width="127dp"
             android:layout_height="38dp"
             android:fontFamily="sans-serif-black"

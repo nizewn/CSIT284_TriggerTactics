@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/profileImageView"
         android:layout_width="327dp"
         android:layout_height="325dp"
         app:layout_constraintBottom_toTopOf="@+id/textLog"
@@ -41,6 +41,7 @@
             android:hint="Email"
             android:inputType="text"
             android:padding="32px"
+            android:textColor="@color/white"
             android:textColorHint="#5E5E5E" />
 
         <Space
@@ -56,6 +57,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="32px"
+            android:textColor="@color/white"
             android:textColorHint="#5E5E5E" />
 
         <Space
@@ -85,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView

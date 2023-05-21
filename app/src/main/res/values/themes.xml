@@ -1,9 +1,26 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.TriggerTactics" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:textColor">#999999</item>
+        <item name="android:buttonStyle">@style/ButtonTheme</item>
+        <item name="editTextStyle">@style/EditTextTheme</item>
     </style>
 
     <style name="Theme.TriggerTactics" parent="Base.Theme.TriggerTactics" />
+
+    <style name="ButtonTheme" parent="android:style/Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/rounded_red</item>
+        <item name="android:padding">32px</item>
+        <item name="android:paddingHorizontal">64px</item>
+    </style>
+
+    <style name="EditTextTheme" parent="android:style/Widget.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">#5E5E5E</item>
+        <item name="android:background">@drawable/rounded_gray</item>
+        <item name="android:padding">16px</item>
+    </style>
 </resources>

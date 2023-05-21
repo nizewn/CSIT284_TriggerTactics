@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    tools:context=".EditGamesActivity">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Games"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="279dp"
+        android:layout_height="303dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveGames"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.5">
+
+        <CheckBox
+            android:id="@+id/checkboxCsgo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#CFCFCF"
+            android:text="CS:GO"
+            android:textColor="#B5B5B5" />
+
+        <CheckBox
+            android:id="@+id/checkboxDota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#CFCFCF"
+            android:text="Dota 2"
+            android:textColor="#B5B5B5" />
+
+        <CheckBox
+            android:id="@+id/checkboxValorant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#CFCFCF"
+            android:text="VALORANT"
+            android:textColor="#B5B5B5" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="11dp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other games (separate with comma)" />
+
+        <EditText
+            android:id="@+id/editTextOtherGames"
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            android:background="#272727"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSaveGames"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:padding="32px"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelGames"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btnCancelGames"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#737373"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveGames"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintVertical_bias="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

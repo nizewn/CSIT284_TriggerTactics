@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 public class HomepageActivity extends AppCompatActivity {
     ImageButton btnProfileImage;
@@ -27,13 +28,13 @@ public class HomepageActivity extends AppCompatActivity {
 
         btnProfileImage = findViewById(R.id.btnProfileImage);
         btnProfileImage.setOnClickListener(view -> {
-            Intent intent = new Intent(HomepageActivity.this, ProfileActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
         });
 
         btnOpenForums = findViewById(R.id.btnOpenForums);
         btnOpenForums.setOnClickListener(view -> {
-            Intent intent = new Intent(HomepageActivity.this, ForumsActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ForumsActivity.class);
             startActivity(intent);
         });
 
@@ -41,12 +42,25 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
+    protected void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
+    @Override
+    protected void onStart() {
         super.onStart();
+        updateUI();
+    }
+
+    private void updateUI() {
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null) {
             homeHelloText.setText("Hello, " + user.getDisplayName());
+            if (user.getPhotoUrl() != null) {
+                Picasso.get().load(user.getPhotoUrl()).into(btnProfileImage);
+            }
         }
     }
 }

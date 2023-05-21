@@ -4,203 +4,171 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForumsActivity"
     android:background="@color/black"
-    android:backgroundTint="#000000">
+    android:backgroundTint="#000000"
+    tools:context=".ForumsActivity">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="100dp"
-            android:layout_height="37dp"
-            android:foregroundTint="@color/white"
-            android:text="Forums"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.04" />
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CF5C5C"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMainForums"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#CF5C5C"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.031"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+    <TextView
+        android:id="@+id/textViewMainForums"
+        android:layout_width="100dp"
+        android:layout_height="37dp"
+        android:foregroundTint="@color/white"
+        android:text="Forums"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="46dp"
-            android:layout_height="44dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.824"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03"
-            app:srcCompat="@android:drawable/ic_menu_search" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.957"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.037"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <EditText
-            android:id="@+id/btnSearch"
-            android:layout_width="359dp"
-            android:layout_height="43dp"
-            android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
-            android:ems="10"
-            android:inputType="text"
-            android:text="  Search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.119" />
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="347dp"
+        android:layout_height="89dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack"
+        app:layout_constraintVertical_bias="0.5">
 
         <Button
-            android:id="@+id/btnGeneral"
-            android:layout_width="70dp"
-            android:layout_height="32dp"
+            android:id="@+id/btnForumGeneral"
+            android:layout_width="86dp"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_gray"
             android:backgroundTint="@android:color/holo_blue_dark"
-            android:textColor="@color/white"
+            android:padding="2px"
             android:text="General"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_weight="1" />
 
         <Button
-            android:id="@+id/btnValorant"
-            android:layout_width="74dp"
-            android:layout_height="32dp"
+            android:id="@+id/btnForumValorant"
+            android:layout_width="96dp"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
             android:text="VALORANT"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.364"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_weight="1" />
 
         <Button
-            android:id="@+id/btnCsgo"
-            android:layout_width="74dp"
-            android:layout_height="32dp"
+            android:id="@+id/btnForumCsgo"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
-            android:text="CS:GO"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.652"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            android:text="CSGO"
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_weight="1" />
 
         <Button
-            android:id="@+id/btnDota"
-            android:layout_width="74dp"
-            android:layout_height="32dp"
+            android:id="@+id/btnForumDota"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
-            android:text="DOTA 2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.922"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            android:text="Dota 2"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="345dp"
+        android:layout_height="476dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_constraintVertical_bias="0.5">
 
         <Button
-            android:id="@+id/btnIntroductions"
-            android:layout_width="357dp"
+            android:id="@+id/btnForumIntroductions"
+            android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
             android:text="Introductions"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.321" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <Button
-            android:id="@+id/btnEvents"
-            android:layout_width="357dp"
+            android:id="@+id/btnForumEvents"
+            android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
             android:text="Events"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.425" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <Button
-            android:id="@+id/btnFeeds"
-            android:layout_width="357dp"
+            android:id="@+id/btnForumFeedback"
+            android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
             android:text="Feedback and Suggestions"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.772" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <Button
-            android:id="@+id/btnGames"
-            android:layout_width="357dp"
+            android:id="@+id/btnForumGames"
+            android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
             android:text="Other Games"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.66" />
+            android:textColor="@color/white" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
 
         <Button
-            android:id="@+id/btnHardware"
-            android:layout_width="357dp"
+            android:id="@+id/btnForumTech"
+            android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/rounded_gray"
-            android:textColor="@color/white"
             android:text="Hardware and Software"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.541" />
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
