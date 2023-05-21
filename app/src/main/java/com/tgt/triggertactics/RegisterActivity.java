@@ -42,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void createAccount(String displayName, String email, String password) {
+        btnCreateAcc.setEnabled(false);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -67,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(RegisterActivity.this, "Registration failed.",
                                 Toast.LENGTH_SHORT).show();
+                        btnCreateAcc.setEnabled(true);
                     }
                 });
     }

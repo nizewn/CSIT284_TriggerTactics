@@ -12,9 +12,8 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#CF5C5C"
+        android:backgroundTint="@color/red"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewMainForums"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +33,6 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
@@ -167,7 +165,7 @@
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:background="@drawable/rounded_gray"
-            android:text="Hardware and Software"
+            android:text="Technology"
             android:textColor="@color/white" />
     </LinearLayout>
 

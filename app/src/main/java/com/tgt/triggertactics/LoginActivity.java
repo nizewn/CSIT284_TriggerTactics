@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginAccount(String email, String password) {
+        btnLogin.setEnabled(false);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(LoginActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
+                        btnLogin.setEnabled(true);
                     }
                 });
     }

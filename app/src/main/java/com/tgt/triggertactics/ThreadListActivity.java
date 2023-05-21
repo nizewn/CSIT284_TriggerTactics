@@ -42,7 +42,7 @@ public class ThreadListActivity extends AppCompatActivity {
             intent1.putExtra("forum", forum);
             startActivity(intent1);
         });
-        
+
         linearThreadList = findViewById(R.id.linearThreadList);
 
         textViewForumName = findViewById(R.id.textViewForumName);
@@ -59,6 +59,7 @@ public class ThreadListActivity extends AppCompatActivity {
         super.onStart();
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        linearThreadList.removeAllViews();
 
         Intent intent = getIntent();
         String forum = intent.getStringExtra("forum");
@@ -67,8 +68,9 @@ public class ThreadListActivity extends AppCompatActivity {
         ref.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 for (DataSnapshot threadSnapshot : task.getResult().getChildren()) {
+                    String threadKey = threadSnapshot.getKey();
                     String threadTitle = threadSnapshot.child("title").getValue().toString();
-                    String threadAuthorId = threadSnapshot.child("authorId").getValue().toString();
+                    String threadAuthorId = threadSnapshot.child("startedBy").getValue().toString();
                     String threadDate = threadSnapshot.child("date").getValue().toString();
                     String threadTime = threadSnapshot.child("time").getValue().toString();
 
@@ -87,7 +89,21 @@ public class ThreadListActivity extends AppCompatActivity {
                             threadCaption.setText(threadAuthor + " - " + threadDate + " " + threadTime);
                             Picasso.get().load(threadAuthorImageUrl).into(imageThreadButton);
 
-                            System.out.println(threadCaption.getText().toString());
+                            imageThreadButton.setOnClickListener(view -> {
+                                Intent intent1 = new Intent(getApplicationContext(), ThreadActivity.class);
+                                intent1.putExtra("forum", forum);
+                                intent1.putExtra("threadTitle", threadTitle);
+                                intent1.putExtra("threadKey", threadKey);
+                                startActivity(intent1);
+                            });
+
+                            textViewThreadTitle.setOnClickListener(view -> {
+                                Intent intent1 = new Intent(getApplicationContext(), ThreadActivity.class);
+                                intent1.putExtra("forum", forum);
+                                intent1.putExtra("threadTitle", threadTitle);
+                                intent1.putExtra("threadKey", threadKey);
+                                startActivity(intent1);
+                            });
 
                             linearThreadList.addView(threadItemView);
 
