@@ -55,12 +55,6 @@ public class EditGamesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        updateUI();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         updateUI();

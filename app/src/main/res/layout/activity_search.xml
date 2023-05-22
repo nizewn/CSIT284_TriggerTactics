@@ -34,8 +34,8 @@
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:hint="Search user or team"
+            android:inputType="text" />
 
         <ImageButton
             android:id="@+id/btnSearchStart"

@@ -10,20 +10,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button btnLogout, btnEditProfileActivity;
+
+    Button btnLogout, btnEditProfileActivity, btnProfileTeam;
     TextView textViewProfileName, textViewProfileEmail;
     ImageView profileImageView;
-    private FirebaseAuth mAuth;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance("https://triggertactics-4c472-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        mAuth = FirebaseAuth.getInstance();
 
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(view -> {
@@ -42,12 +44,10 @@ public class ProfileActivity extends AppCompatActivity {
         textViewProfileName = findViewById(R.id.textViewProfileName);
         textViewProfileEmail = findViewById(R.id.textViewProfileEmail);
         profileImageView = findViewById(R.id.profileImageView);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        updateUI();
+        btnProfileTeam = findViewById(R.id.btnProfileTeam);
+
+
     }
 
     @Override
@@ -59,11 +59,28 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateUI() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if (currentUser != null) {
-            textViewProfileName.setText(currentUser.getDisplayName());
-            textViewProfileEmail.setText(currentUser.getEmail());
-            if (currentUser.getPhotoUrl() != null)
-                Picasso.get().load(currentUser.getPhotoUrl()).into(profileImageView);
-        }
+        if (currentUser == null) return;
+        textViewProfileName.setText(currentUser.getDisplayName());
+        textViewProfileEmail.setText(currentUser.getEmail());
+        if (currentUser.getPhotoUrl() != null)
+            Picasso.get().load(currentUser.getPhotoUrl()).into(profileImageView);
+
+        String currentUserId = mAuth.getCurrentUser().getUid();
+        database.getReference("users/" + currentUserId + "/team").get().addOnSuccessListener(snapshot -> {
+            if (snapshot.exists()) {
+                btnProfileTeam.setText("Team: " + snapshot.getValue().toString());
+                btnProfileTeam.setOnClickListener(view -> {
+                    Intent intent = new Intent(getApplicationContext(), TeamProfileActivity.class);
+                    intent.putExtra("teamName", snapshot.getValue().toString());
+                    startActivity(intent);
+                });
+            } else {
+                btnProfileTeam.setText("Create Team");
+                btnProfileTeam.setOnClickListener(view -> {
+                    Intent intent = new Intent(getApplicationContext(), CreateTeamActivity.class);
+                    startActivity(intent);
+                });
+            }
+        });
     }
 }

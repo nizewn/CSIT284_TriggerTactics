@@ -1,6 +1,7 @@
 package com.tgt.triggertactics;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,11 +49,16 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
 
+                        String defaultPhotoUrl = "https://firebasestorage.googleapis.com/v0/b/triggertactics-4c472.appspot.com/o/default_pfp.jpg?alt=media&token=ee5d9425-b219-42b7-8c79-c765beadda9f";
+
                         DatabaseReference ref = database.getReference("users/" + user.getUid());
                         ref.child("displayname").setValue(displayName);
+                        ref.child("reputation").setValue(0);
+                        ref.child("imageurl").setValue(defaultPhotoUrl);
 
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(displayName)
+                                .setPhotoUri(Uri.parse(defaultPhotoUrl))
                                 .build();
 
                         user.updateProfile(profileUpdates)

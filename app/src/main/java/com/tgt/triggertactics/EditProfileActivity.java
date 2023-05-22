@@ -72,7 +72,6 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("activity result");
         System.out.println(requestCode);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();

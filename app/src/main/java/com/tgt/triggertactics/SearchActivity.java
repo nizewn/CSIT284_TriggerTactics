@@ -1,5 +1,6 @@
 package com.tgt.triggertactics;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -20,7 +22,8 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://triggertactics-4c472-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
-    ArrayList<DataSnapshot> userSnapshots;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    ArrayList<DataSnapshot> userSnapshots, teamSnapshots;
 
     ImageButton btnBack, btnSearchStart;
     EditText editTextSearch;
@@ -46,24 +49,19 @@ public class SearchActivity extends AppCompatActivity {
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         getAllUsers();
+        getAllTeams();
 
         btnSearchStart.setOnClickListener(view -> {
-            System.out.println("CLICK: 1");
             if (userSnapshots == null) return;
-            System.out.println("CLICK: 2");
             String search = editTextSearch.getText().toString();
             if (search.equals("")) {
                 editTextSearch.setError("Please enter a search term");
                 return;
             }
-            System.out.println("CLICK: 3");
             linearSearchList.removeAllViews();
             for (DataSnapshot userSnapshot : userSnapshots) {
-                System.out.println("looping");
                 String userDisplayName = userSnapshot.child("displayname").getValue().toString();
-                System.out.println("userDisplayName: " + userDisplayName);
                 if (userDisplayName.toLowerCase().contains(search.toLowerCase())) {
-                    System.out.println("true userDisplayName: " + userDisplayName);
                     View searchItem = inflater.inflate(R.layout.layout_item, linearSearchList, false);
                     Button btnDisplayName = searchItem.findViewById(R.id.itemBtnName);
                     ImageButton imageBtnUser = searchItem.findViewById(R.id.itemImage);
@@ -87,6 +85,53 @@ public class SearchActivity extends AppCompatActivity {
 
                     textUserGames.setText(String.join(", ", games));
 
+                    String profileId = userSnapshot.getKey();
+                    if (profileId != mAuth.getCurrentUser().getUid()) {
+                        btnDisplayName.setOnClickListener(v -> {
+                            Intent intent = new Intent(getApplicationContext(), OtherProfileActivity.class);
+                            intent.putExtra("profileId", profileId);
+                            startActivity(intent);
+                        });
+                        imageBtnUser.setOnClickListener(v -> {
+
+                            Intent intent = new Intent(getApplicationContext(), OtherProfileActivity.class);
+                            intent.putExtra("profileId", profileId);
+                            startActivity(intent);
+                        });
+                    }
+
+
+                    linearSearchList.addView(searchItem);
+                }
+            }
+            for (DataSnapshot teamSnapshot : teamSnapshots) {
+                String teamName = teamSnapshot.getKey();
+                if (teamName.toLowerCase().contains(search.toLowerCase())) {
+                    View searchItem = inflater.inflate(R.layout.layout_item, linearSearchList, false);
+                    Button btnDisplayName = searchItem.findViewById(R.id.itemBtnName);
+                    ImageButton imageBtnUser = searchItem.findViewById(R.id.itemImage);
+                    imageBtnUser.setVisibility(View.GONE);
+                    TextView txtTeamCaption = searchItem.findViewById(R.id.itemCaption);
+
+                    btnDisplayName.setText("(Team) " + teamName);
+
+                    ArrayList<String> games = new ArrayList<>();
+
+                    if (teamSnapshot.child("csgo").getValue() != null && teamSnapshot.child("csgo").getValue(Boolean.class))
+                        games.add("CS:GO");
+                    if (teamSnapshot.child("dota").getValue() != null && teamSnapshot.child("dota").getValue(Boolean.class))
+                        games.add("Dota 2");
+                    if (teamSnapshot.child("valorant").getValue() != null && teamSnapshot.child("valorant").getValue(Boolean.class))
+                        games.add("Valorant");
+
+                    txtTeamCaption.setText(String.join(", ", games));
+
+                    btnDisplayName.setOnClickListener(v -> {
+                        Intent intent = new Intent(getApplicationContext(), TeamProfileActivity.class);
+                        intent.putExtra("teamName", teamName);
+                        startActivity(intent);
+                    });
+
                     linearSearchList.addView(searchItem);
                 }
             }
@@ -99,6 +144,17 @@ public class SearchActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 for (DataSnapshot userSnapshot : task.getResult().getChildren()) {
                     userSnapshots.add(userSnapshot);
+                }
+            }
+        });
+    }
+
+    private void getAllTeams() {
+        teamSnapshots = new ArrayList<>();
+        database.getReference("teams").get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (DataSnapshot teamSnapshot : task.getResult().getChildren()) {
+                    teamSnapshots.add(teamSnapshot);
                 }
             }
         });

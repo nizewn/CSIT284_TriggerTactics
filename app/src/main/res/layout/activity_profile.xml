@@ -14,6 +14,8 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="64dp"
+        android:adjustViewBounds="true"
+        android:padding="0px"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,11 +29,10 @@
         android:id="@+id/linearLayout6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/btnEditProfileActivity"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout19"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImageView">
@@ -58,6 +59,38 @@
             tools:layout_editor_absoluteY="448dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout19"
+        android:layout_width="271dp"
+        android:layout_height="199dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.5">
+
+        <Button
+            android:id="@+id/btnProfileTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_gray"
+            android:text="Loading team info..." />
+
+        <Space
+            android:layout_width="261dp"
+            android:layout_height="15dp" />
+
+        <Button
+            android:id="@+id/btnEditProfileActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF1E1E"
+            android:text="Edit Profile" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
@@ -69,21 +102,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEditProfileActivity"
-        app:layout_constraintVertical_bias="0.504" />
-
-    <Button
-        android:id="@+id/btnEditProfileActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
-        android:backgroundTint="#FF1E1E"
-        android:text="Edit Profile"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout19"
         app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

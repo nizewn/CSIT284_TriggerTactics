@@ -53,12 +53,6 @@ public class HomepageActivity extends AppCompatActivity {
         updateUI();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        updateUI();
-    }
-
     private void updateUI() {
         FirebaseUser user = mAuth.getCurrentUser();
 

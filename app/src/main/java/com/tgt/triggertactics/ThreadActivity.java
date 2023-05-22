@@ -117,6 +117,7 @@ public class ThreadActivity extends AppCompatActivity {
                         }
                     });
                 }
+                
             }
 
             @Override
