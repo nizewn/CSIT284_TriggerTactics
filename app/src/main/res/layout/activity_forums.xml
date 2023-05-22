@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    android:backgroundTint="#000000"
+    android:background="#1A1A1A"
     tools:context=".ForumsActivity">
 
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/red"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
         app:layout_constraintEnd_toStartOf="@+id/textViewMainForums"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:tint="#FFFFFF" />
 
     <TextView
         android:id="@+id/textViewMainForums"
@@ -51,25 +51,11 @@
         app:layout_constraintVertical_bias="0.5">
 
         <Button
-            android:id="@+id/btnForumGeneral"
-            android:layout_width="86dp"
-            android:layout_height="48dp"
-            android:background="@drawable/rounded_gray"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:padding="2px"
-            android:text="General"
-            android:textColor="@color/white" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_weight="1" />
-
-        <Button
             android:id="@+id/btnForumValorant"
-            android:layout_width="96dp"
+            android:layout_width="110dp"
             android:layout_height="48dp"
-            android:background="@drawable/rounded_gray"
+            android:background="@drawable/rounded_red"
+            android:backgroundTint="#D10E0E"
             android:text="VALORANT"
             android:textColor="@color/white" />
 
@@ -80,9 +66,10 @@
 
         <Button
             android:id="@+id/btnForumCsgo"
-            android:layout_width="80dp"
+            android:layout_width="110dp"
             android:layout_height="48dp"
-            android:background="@drawable/rounded_gray"
+            android:background="@drawable/rounded_red"
+            android:backgroundTint="#D10E0E"
             android:text="CSGO"
             android:textColor="@color/white" />
 
@@ -93,9 +80,10 @@
 
         <Button
             android:id="@+id/btnForumDota"
-            android:layout_width="80dp"
+            android:layout_width="110dp"
             android:layout_height="48dp"
-            android:background="@drawable/rounded_gray"
+            android:background="@drawable/rounded_red"
+            android:backgroundTint="#D10E0E"
             android:text="Dota 2"
             android:textColor="@color/white" />
     </LinearLayout>

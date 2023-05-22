@@ -80,10 +80,10 @@ public class ThreadListActivity extends AppCompatActivity {
                             String threadAuthor = userTask.getResult().child("displayname").getValue().toString();
                             String threadAuthorImageUrl = userTask.getResult().child("imageurl").getValue().toString();
 
-                            View threadItemView = inflater.inflate(R.layout.layout_thread, linearThreadList, false);
-                            Button textViewThreadTitle = threadItemView.findViewById(R.id.btnThreadTitle);
-                            ImageButton imageThreadButton = threadItemView.findViewById(R.id.imageThreadButton);
-                            TextView threadCaption = threadItemView.findViewById(R.id.threadCaptionInList);
+                            View threadItemView = inflater.inflate(R.layout.layout_item, linearThreadList, false);
+                            Button textViewThreadTitle = threadItemView.findViewById(R.id.itemBtnName);
+                            ImageButton imageThreadButton = threadItemView.findViewById(R.id.itemImage);
+                            TextView threadCaption = threadItemView.findViewById(R.id.itemCaption);
 
                             textViewThreadTitle.setText(threadTitle);
                             threadCaption.setText(threadAuthor + " - " + threadDate + " " + threadTime);

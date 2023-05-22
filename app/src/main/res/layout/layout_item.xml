@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageThreadButton"
+            android:id="@+id/itemImage"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="centerCrop"
@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btnThreadTitle"
+                android:id="@+id/itemBtnName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#292929"
@@ -39,7 +39,7 @@
                 android:textColor="#FFFFFF" />
 
             <TextView
-                android:id="@+id/threadCaptionInList"
+                android:id="@+id/itemCaption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="4px"

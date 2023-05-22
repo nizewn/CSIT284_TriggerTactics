@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="#1A1A1A"
     tools:context=".MainActivity">
 
     <ImageView
@@ -70,7 +70,7 @@
 
         <TextView
             android:id="@+id/textViewProfileEmail"
-            android:layout_width="127dp"
+            android:layout_width="wrap_content"
             android:layout_height="38dp"
             android:fontFamily="sans-serif-black"
             android:text="Connect."
@@ -79,7 +79,7 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="158dp"
+            android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:fontFamily="sans-serif-black"
             android:text="Strategize."
@@ -88,7 +88,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="158dp"
+            android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:fontFamily="sans-serif-black"
             android:text="Win."

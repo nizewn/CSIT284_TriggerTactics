@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 public class HomepageActivity extends AppCompatActivity {
-    ImageButton btnProfileImage;
+    ImageButton btnProfileImage, btnSearchActivity;
     Button btnOpenForums;
 
     TextView homeHelloText;
@@ -29,6 +29,12 @@ public class HomepageActivity extends AppCompatActivity {
         btnProfileImage = findViewById(R.id.btnProfileImage);
         btnProfileImage.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+        });
+
+        btnSearchActivity = findViewById(R.id.btnSearchActivity);
+        btnSearchActivity.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(intent);
         });
 
