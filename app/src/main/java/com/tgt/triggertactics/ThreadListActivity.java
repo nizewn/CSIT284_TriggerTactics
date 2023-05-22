@@ -59,7 +59,6 @@ public class ThreadListActivity extends AppCompatActivity {
         super.onStart();
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        linearThreadList.removeAllViews();
 
         Intent intent = getIntent();
         String forum = intent.getStringExtra("forum");
@@ -67,6 +66,7 @@ public class ThreadListActivity extends AppCompatActivity {
         DatabaseReference ref = database.getReference("forums/" + forum);
         ref.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                linearThreadList.removeAllViews();
                 for (DataSnapshot threadSnapshot : task.getResult().getChildren()) {
                     String threadKey = threadSnapshot.getKey();
                     String threadTitle = threadSnapshot.child("title").getValue().toString();

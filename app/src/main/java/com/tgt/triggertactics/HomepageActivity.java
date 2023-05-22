@@ -14,7 +14,9 @@ import com.squareup.picasso.Picasso;
 
 public class HomepageActivity extends AppCompatActivity {
     ImageButton btnProfileImage, btnSearchActivity;
-    Button btnOpenForums;
+    Button btnOpenForums, btnOpenMediaHub, btnOpenScrims, btnOpenChatList;
+
+    ImageButton btnOpenCsgo, btnOpenDota, btnOpenValorant;
 
     TextView homeHelloText;
     private FirebaseAuth mAuth;
@@ -43,6 +45,29 @@ public class HomepageActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), ForumsActivity.class);
             startActivity(intent);
         });
+
+        btnOpenMediaHub = findViewById(R.id.btnOpenMediaHub);
+        btnOpenMediaHub.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), MediaHubActivity.class);
+            startActivity(intent);
+        });
+
+        btnOpenScrims = findViewById(R.id.btnOpenScrims);
+        btnOpenScrims.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ScrimsActivity.class);
+            startActivity(intent);
+        });
+
+        btnOpenChatList = findViewById(R.id.btnOpenChatList);
+        btnOpenChatList.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ChatListActivity.class);
+            startActivity(intent);
+        });
+
+        btnOpenCsgo = findViewById(R.id.btnOpenCsgo);
+        btnOpenDota = findViewById(R.id.btnOpenDota);
+        btnOpenValorant = findViewById(R.id.btnOpenValorant);
+        // TODO: Add onClickListeners for these buttons
 
         homeHelloText = findViewById(R.id.homeHelloText);
     }

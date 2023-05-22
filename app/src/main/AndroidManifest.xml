@@ -13,6 +13,16 @@
         android:theme="@style/Theme.TriggerTactics"
         tools:targetApi="31">
         <activity
+            android:name=".ChatListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScrimsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MediaHubActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".TeamProfileActivity"
             android:exported="false" />
         <activity

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/profileImageView"
-        android:layout_width="363dp"
-        android:layout_height="351dp"
+        android:layout_width="288dp"
+        android:layout_height="251dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,6 +32,20 @@
         app:layout_constraintVertical_bias="0.5">
 
         <Button
+            android:id="@+id/btnLoginActivity"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/rounded_red"
+            android:text="Sign in"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:iconTint="#A63030" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
             android:id="@+id/btnRegisterActivity"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -40,25 +54,12 @@
             android:textColor="@color/white"
             android:textSize="18dp" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <Button
-            android:id="@+id/btnLoginActivity"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/rounded_red"
-            android:text="Log in"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            app:iconTint="#A63030" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="315dp"
-        android:layout_height="112dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -71,29 +72,29 @@
         <TextView
             android:id="@+id/textViewProfileEmail"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="Connect."
             android:textColor="@color/white"
-            android:textSize="32dp" />
+            android:textSize="48sp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="Strategize."
             android:textColor="@color/white"
-            android:textSize="32dp" />
+            android:textSize="48sp" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="Win."
             android:textColor="@color/white"
-            android:textSize="32dp" />
+            android:textSize="48sp" />
 
     </LinearLayout>
 
