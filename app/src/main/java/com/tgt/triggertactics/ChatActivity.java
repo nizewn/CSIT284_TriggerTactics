@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
@@ -67,12 +68,14 @@ public class ChatActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        final DatabaseReference[] msgsRef = {database.getReference("chat/" + chatId + "/messages")};
+
         btnSendMessage.setOnClickListener(v -> {
             String message = editTextMessage.getText().toString();
             if (!message.isEmpty()) {
                 editTextMessage.setEnabled(false);
 
-                String newKey = database.getReference("chat/" + chatId + "/messages").push().getKey();
+                String newKey = msgsRef[0].push().getKey();
 
                 HashMap<String, Object> messageMap = new HashMap<>();
                 messageMap.put("sender", mAuth.getUid());
@@ -81,7 +84,6 @@ public class ChatActivity extends AppCompatActivity {
                     editTextMessage.setText("");
                     editTextMessage.setEnabled(true);
                 });
-                editTextMessage.setText("");
             }
         });
 
@@ -91,6 +93,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 linearMessageList.removeAllViews();
+                msgsRef[0] = database.getReference("chat/" + chatId + "/messages");
                 for (DataSnapshot msg : snapshot.getChildren()) {
                     String message = msg.child("message").getValue(String.class);
                     String sender = msg.child("sender").getValue(String.class);
