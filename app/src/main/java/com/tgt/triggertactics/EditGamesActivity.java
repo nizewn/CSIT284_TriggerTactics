@@ -64,12 +64,12 @@ public class EditGamesActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null)
             return;
-        database.getReference("users/" + user.getUid() + "/games").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Boolean csgo = Boolean.parseBoolean(task.getResult().child("csgo").getValue().toString());
-                Boolean dota = Boolean.parseBoolean(task.getResult().child("dota").getValue().toString());
-                Boolean valorant = Boolean.parseBoolean(task.getResult().child("valorant").getValue().toString());
-                String other = task.getResult().child("other").getValue().toString();
+        database.getReference("users/" + user.getUid() + "/games").get().addOnSuccessListener(task -> {
+            if (task.exists()) {
+                Boolean csgo = Boolean.parseBoolean(task.child("csgo").getValue().toString());
+                Boolean dota = Boolean.parseBoolean(task.child("dota").getValue().toString());
+                Boolean valorant = Boolean.parseBoolean(task.child("valorant").getValue().toString());
+                String other = task.child("other").getValue().toString();
 
                 checkboxCsgo.setChecked(csgo);
                 checkboxDota.setChecked(dota);

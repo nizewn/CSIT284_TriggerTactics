@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class HomepageActivity extends AppCompatActivity {
@@ -19,6 +21,8 @@ public class HomepageActivity extends AppCompatActivity {
     ImageButton btnOpenCsgo, btnOpenDota, btnOpenValorant;
 
     TextView homeHelloText;
+    FirebaseDatabase database = FirebaseDatabase.getInstance("https://triggertactics-4c472-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    String teamName;
     private FirebaseAuth mAuth;
 
     @Override
@@ -54,8 +58,13 @@ public class HomepageActivity extends AppCompatActivity {
 
         btnOpenScrims = findViewById(R.id.btnOpenScrims);
         btnOpenScrims.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ScrimsActivity.class);
-            startActivity(intent);
+            if (teamName == null || teamName.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "You must be in a team to access this feature", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getApplicationContext(), ScrimsActivity.class);
+                intent.putExtra("teamName", teamName);
+                startActivity(intent);
+            }
         });
 
         btnOpenChatList = findViewById(R.id.btnOpenChatList);
@@ -81,11 +90,14 @@ public class HomepageActivity extends AppCompatActivity {
     private void updateUI() {
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (user != null) {
-            homeHelloText.setText("Hello, " + user.getDisplayName());
-            if (user.getPhotoUrl() != null) {
-                Picasso.get().load(user.getPhotoUrl()).into(btnProfileImage);
-            }
+        homeHelloText.setText("Hello, " + user.getDisplayName());
+        if (user.getPhotoUrl() != null) {
+            Picasso.get().load(user.getPhotoUrl()).into(btnProfileImage);
         }
+        database.getReference().child("users").child(user.getUid()).child("team").get().addOnSuccessListener(task -> {
+            if (task.getValue() != null && !task.getValue().toString().isEmpty()) {
+                teamName = task.getValue().toString();
+            }
+        });
     }
 }
