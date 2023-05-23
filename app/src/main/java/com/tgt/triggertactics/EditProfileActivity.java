@@ -48,7 +48,6 @@ public class EditProfileActivity extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
-            System.out.println("Selecting image...");
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
         });
         btnSaveProfile.setOnClickListener(view -> {
@@ -72,11 +71,9 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(requestCode);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
             // Handle the selected image URI to firebase cloud storage
-            System.out.println(imageUri);
             StorageReference storageRef = storage.getReference();
             FirebaseUser user = mAuth.getCurrentUser();
             if (user == null) return;

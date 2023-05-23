@@ -1,5 +1,6 @@
 package com.tgt.triggertactics;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.squareup.picasso.Picasso;
@@ -30,6 +32,10 @@ public class OtherProfileActivity extends AppCompatActivity {
     ImageButton btnBack;
     TextView otherProfileName, otherProfileReputation, otherProfileGames;
     Button btnOtherProfileMessage, btnPlusReputation, btnMinusReputation;
+
+    String chatId, profileId, currentUserId;
+
+    String profileImage, profileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +59,8 @@ public class OtherProfileActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        String profileId = getIntent().getStringExtra("profileId");
-        String currentUserId = mAuth.getCurrentUser().getUid();
+        profileId = getIntent().getStringExtra("profileId");
+        currentUserId = mAuth.getCurrentUser().getUid();
 
         int blueColorInt = Color.parseColor("#01C0FA");
         int greyColorInt = Color.parseColor("#5E5E5E");
@@ -138,9 +144,9 @@ public class OtherProfileActivity extends AppCompatActivity {
 
         database.getReference("users").child(profileId).get().addOnSuccessListener(snapshot -> {
 
-            String profileName = snapshot.child("displayname").getValue().toString();
+            profileName = snapshot.child("displayname").getValue().toString();
             reputation = snapshot.child("reputation").getValue(Integer.class);
-            String profileImage = snapshot.child("imageurl").getValue().toString();
+            profileImage = snapshot.child("imageurl").getValue().toString();
 
             otherProfileName.setText(profileName);
             otherProfileReputation.setText("Reputation: " + reputation);
@@ -159,6 +165,53 @@ public class OtherProfileActivity extends AppCompatActivity {
                 games.add(snapshot.child("games").child("other").getValue().toString());
             }
             otherProfileGames.setText(String.join(", ", games));
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        database.getReference("chat").get().addOnSuccessListener(l -> {
+            boolean found = false;
+            for (DataSnapshot chatSn : l.getChildren()) {
+                if (chatSn.child("participants/" + profileId).exists() && chatSn.child("participants/" + currentUserId).exists()) {
+                    chatId = chatSn.getKey();
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                chatId = "none";
+            }
+        });
+
+        btnOtherProfileMessage.setOnClickListener(l -> {
+            if (chatId == null) return;
+            if (!chatId.isEmpty()) {
+                btnOtherProfileMessage.setEnabled(false);
+            }
+            if (chatId.equals("none")) {
+                chatId = database.getReference("chat").push().getKey();
+                HashMap<String, Object> updates = new HashMap<>();
+                updates.put("chat/" + chatId + "/participants/" + currentUserId, true);
+                updates.put("chat/" + chatId + "/participants/" + profileId, true);
+                database.getReference().updateChildren(updates).addOnSuccessListener(sc -> {
+                    Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                    intent.putExtra("chatId", chatId);
+                    intent.putExtra("otherImage", profileImage);
+                    intent.putExtra("otherName", profileName);
+                    startActivity(intent);
+                    btnOtherProfileMessage.setEnabled(true);
+                });
+            } else if (!chatId.isEmpty()) {
+                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                intent.putExtra("chatId", chatId);
+                intent.putExtra("otherImage", profileImage);
+                intent.putExtra("otherName", profileName);
+                startActivity(intent);
+                btnOtherProfileMessage.setEnabled(true);
+            }
         });
     }
 }

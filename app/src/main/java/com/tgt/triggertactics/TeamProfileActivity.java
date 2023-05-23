@@ -105,7 +105,6 @@ public class TeamProfileActivity extends AppCompatActivity {
     }
 
     private void updateMembers() {
-        System.out.println("called updateMembersssss");
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         String currentUid = mAuth.getCurrentUser().getUid();
         database.getReference("teams/" + teamName + "/members").get().addOnSuccessListener(snapshot -> {
