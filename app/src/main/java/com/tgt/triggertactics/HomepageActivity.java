@@ -76,7 +76,24 @@ public class HomepageActivity extends AppCompatActivity {
         btnOpenCsgo = findViewById(R.id.btnOpenCsgo);
         btnOpenDota = findViewById(R.id.btnOpenDota);
         btnOpenValorant = findViewById(R.id.btnOpenValorant);
-        // TODO: Add onClickListeners for these buttons
+
+        btnOpenCsgo.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            intent.putExtra("game", "csgo");
+            startActivity(intent);
+        });
+
+        btnOpenDota.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            intent.putExtra("game", "dota");
+            startActivity(intent);
+        });
+
+        btnOpenValorant.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            intent.putExtra("game", "valorant");
+            startActivity(intent);
+        });
 
         homeHelloText = findViewById(R.id.homeHelloText);
     }
