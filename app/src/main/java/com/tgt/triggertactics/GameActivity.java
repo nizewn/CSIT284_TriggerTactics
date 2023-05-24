@@ -1,6 +1,7 @@
 package com.tgt.triggertactics;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,19 +38,45 @@ public class GameActivity extends AppCompatActivity {
 
             btnWiki1.setText("Weapons");
             btnWiki2.setText("Maps");
-            // TODO: open external wiki/fandom
+
+            btnWiki1.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://counterstrike.fandom.com/wiki/Category:Counter-Strike:_Global_Offensive_weapons"));
+                startActivity(intent);
+            });
+            btnWiki2.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://counterstrike.fandom.com/wiki/Category:Counter-Strike:_Global_Offensive_Bomb_maps"));
+                startActivity(intent);
+            });
         } else if (game.equals("dota")) {
             textGameName.setText("Dota 2");
             btnWiki3.setVisibility(View.GONE);
             btnWiki1.setText("Heroes");
             btnWiki2.setText("Items");
-            // TODO: open external wiki/fandom
+            btnWiki1.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://dota2.fandom.com/wiki/Heroes"));
+                startActivity(intent);
+            });
+            btnWiki2.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://dota2.fandom.com/wiki/Items"));
+                startActivity(intent);
+            });
         } else if (game.equals("valorant")) {
             textGameName.setText("VALORANT");
             btnWiki1.setText("Agents");
             btnWiki2.setText("Weapons");
             btnWiki3.setText("Maps");
-            // TODO: open external wiki/fandom
+            btnWiki1.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://valorant.fandom.com/wiki/Agents"));
+                startActivity(intent);
+            });
+            btnWiki2.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://valorant.fandom.com/wiki/Weapons"));
+                startActivity(intent);
+            });
+            btnWiki3.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://valorant.fandom.com/wiki/Maps"));
+                startActivity(intent);
+            });
         }
 
         btnGameNews = findViewById(R.id.btnGameNews);

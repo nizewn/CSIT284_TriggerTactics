@@ -36,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginAccount(String email, String password) {
         btnLogin.setEnabled(false);
+        Toast.makeText(this, "Logging in...",
+                Toast.LENGTH_SHORT).show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {

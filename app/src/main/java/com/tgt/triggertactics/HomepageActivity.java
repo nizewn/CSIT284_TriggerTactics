@@ -2,7 +2,6 @@ package com.tgt.triggertactics;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 public class HomepageActivity extends AppCompatActivity {
     ImageButton btnProfileImage, btnSearchActivity;
-    Button btnOpenForums, btnOpenMediaHub, btnOpenScrims, btnOpenChatList;
+    ImageButton btnOpenForums, btnOpenMediaHub, btnOpenScrims, btnOpenChatList;
 
     ImageButton btnOpenCsgo, btnOpenDota, btnOpenValorant;
 

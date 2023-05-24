@@ -11,7 +11,6 @@
         android:id="@+id/linearLayout23"
         android:layout_width="336dp"
         android:layout_height="77dp"
-        android:layout_marginTop="32dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/scrollView7"
@@ -59,7 +58,7 @@
     <ScrollView
         android:id="@+id/scrollView7"
         android:layout_width="match_parent"
-        android:layout_height="556dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -85,8 +84,8 @@
                 android:layout_height="16dp" />
 
             <LinearLayout
-                android:layout_width="360dp"
-                android:layout_height="281dp"
+                android:layout_width="332dp"
+                android:layout_height="218dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -95,29 +94,37 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/btnOpenForums"
-                        android:layout_width="154dp"
-                        android:layout_height="135dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:backgroundTint="#FF0000"
-                        android:paddingHorizontal="128px"
-                        android:text="Forums" />
+                        android:background="@drawable/semirounded_gray"
+                        android:backgroundTint="#353535"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/forums" />
 
                     <Space
                         android:layout_width="4dp"
                         android:layout_height="wrap_content" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/btnOpenMediaHub"
-                        android:layout_width="154dp"
-                        android:layout_height="135dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:backgroundTint="#9C1010"
-                        android:paddingHorizontal="128px"
-                        android:text="Media Hub" />
+                        android:background="@drawable/semirounded_gray"
+                        android:backgroundTint="#353535"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/mediahub" />
 
                 </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -125,26 +132,31 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/btnOpenScrims"
-                        android:layout_width="154dp"
-                        android:layout_height="135dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:backgroundTint="#9C1010"
-                        android:paddingHorizontal="128px"
-                        android:text="Scrims" />
+                        android:background="@drawable/semirounded_gray"
+                        android:backgroundTint="#353535"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/scrims" />
 
                     <Space
                         android:layout_width="4dp"
                         android:layout_height="wrap_content" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/btnOpenChatList"
-                        android:layout_width="154dp"
-                        android:layout_height="135dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:paddingHorizontal="128px"
-                        android:text="Chat" />
+                        android:background="@drawable/semirounded_gray"
+                        android:backgroundTint="#353535"
+                        android:padding="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/chat" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -177,22 +189,24 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btnOpenCsgo"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/csgo" />
 
-                    <Space
-                        android:layout_width="8dp"
-                        android:layout_height="wrap_content" />
+                    <ImageButton
+                        android:id="@+id/btnOpenValorant"
+                        android:layout_width="140dp"
+                        android:layout_height="130dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:padding="0px"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/valorant" />
 
                     <ImageButton
                         android:id="@+id/btnOpenDota"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="140dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
                         app:srcCompat="@drawable/dota" />
                 </LinearLayout>
 
@@ -202,13 +216,13 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/btnOpenValorant"
+                        android:id="@+id/btnOpenCsgo"
                         android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_height="130dp"
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
-                        android:padding="0px"
-                        app:srcCompat="@drawable/valorant" />
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/csgo" />
                 </LinearLayout>
             </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +65,7 @@ public class EditProfileActivity extends AppCompatActivity {
             if (!editNewPassword.getText().toString().equals("")) {
                 user.updatePassword(editNewPassword.getText().toString());
             }
+            Toast.makeText(this, "Updating profile... This make take a few seconds to show", Toast.LENGTH_LONG).show();
             finish();
         });
     }

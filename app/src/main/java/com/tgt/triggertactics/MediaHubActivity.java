@@ -64,15 +64,7 @@ public class MediaHubActivity extends AppCompatActivity {
 
             database.getReference("mediahub").child(newKey).updateChildren(values);
         });
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        updateUI();
-    }
-
-    private void updateUI() {
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         database.getReference("mediahub").addValueEventListener(new ValueEventListener() {
             @Override
@@ -113,5 +105,10 @@ public class MediaHubActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

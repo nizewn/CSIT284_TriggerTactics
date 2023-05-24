@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,7 @@ public class ChatListActivity extends AppCompatActivity {
 
     ImageButton btnBack;
     LinearLayout linearChatList;
+    TextView chatListExtra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class ChatListActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
 
         linearChatList = findViewById(R.id.linearChatList);
+        chatListExtra = findViewById(R.id.chatListExtra);
     }
 
     @Override
@@ -53,6 +56,8 @@ public class ChatListActivity extends AppCompatActivity {
                         String otherUid = participant.getKey();
                         View view = inflater.inflate(R.layout.layout_chatlistitem, linearChatList, false);
                         database.getReference("users/" + otherUid).get().addOnSuccessListener(sn2 -> {
+                            chatListExtra.setVisibility(View.GONE);
+
                             String otherName = sn2.child("displayname").getValue(String.class);
                             String otherImage = sn2.child("imageurl").getValue(String.class);
 

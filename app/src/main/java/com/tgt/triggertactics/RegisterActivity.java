@@ -44,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void createAccount(String displayName, String email, String password) {
         btnCreateAcc.setEnabled(false);
+        Toast.makeText(this, "Creating account...",
+                Toast.LENGTH_SHORT).show();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
